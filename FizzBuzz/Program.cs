@@ -7,7 +7,7 @@ namespace FizzBuzz
     class Program
     {
         static readonly List<double> ForLoop = new List<double>();
-        static List<double> forLoop1 = new List<double>();
+        static readonly List<double> forLoop1 = new List<double>();
         static List<double> linqLoop = new List<double>();
             
         static void Main(string[] args)
