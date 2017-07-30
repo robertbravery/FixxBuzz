@@ -9,7 +9,7 @@ namespace FizzBuzz.Tests
         [TestMethod]
         public void LinqLoopTest()
         {
-            var expected = 2;
+            var expected = 5;
             var duration = LinqLoop.Loop(10000);
 
             Assert.IsTrue(expected>duration);
