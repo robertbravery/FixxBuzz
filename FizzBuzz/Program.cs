@@ -31,29 +31,18 @@ namespace FizzBuzz
             Console.ReadLine();
         }
 
+        private static void NormalLoop()
+        {
+            var duration = FizzBuzz.NormalLoop.Loop(1000);
+            if (duration > 0) Console.WriteLine($"Time taken for normal Loop: {duration}");
+            forLoop.Add(duration);
+        }
+
         private static void LinqLoop()
         {
             var duration = FizzBuzz.LinqLoop.Loop(1000);
             if (duration > 0) Console.WriteLine($"Time taken for Linq: {duration}");
             linqLoop.Add(duration);
-        }
-
-        private static void NormalLoop()
-        {
-            DateTime start = DateTime.Now;
-            StringBuilder message = new StringBuilder();
-            for (int i = 0; i < 1000; i++)
-            {
-                var s = string.Empty;
-                if (i % (15) == 0) message.Append("FizzBuzz");
-                else if (i % 3 == 0) message.Append("Fizz");
-                else if (i % 5 == 0) message.Append("Buzz").AppendLine();
-                else message.Append(i.ToString());
-            }
-            var duration = start.Subtract(DateTime.Now).Duration().TotalMilliseconds;
-            forLoop.Add(duration);
-            //Console.WriteLine(message.ToString());
-            if (duration > 0) Console.WriteLine($"Time taken for loop: {duration}");
         }
 
         private static void ForLoop1()

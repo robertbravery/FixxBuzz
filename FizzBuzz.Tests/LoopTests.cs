@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace FizzBuzz.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class LoopTests
     {
         [TestMethod]
         public void LinqLoopTest()
@@ -13,6 +13,15 @@ namespace FizzBuzz.Tests
             var duration = LinqLoop.Loop(10000);
 
             Assert.IsTrue(expected>duration);
+        }
+
+        [TestMethod]
+        public void NormalLoopTest()
+        {
+            var expected = 2;
+            var duration = NormalLoop.Loop(10000);
+
+            Assert.IsTrue(expected > duration);
         }
     }
 }
