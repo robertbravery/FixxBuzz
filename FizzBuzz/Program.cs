@@ -33,16 +33,9 @@ namespace FizzBuzz
 
         private static void LinqLoop()
         {
-            DateTime start = DateTime.Now;
-            StringBuilder message = new StringBuilder();
-            Enumerable.Range(1, 1000)
-                .ToList()
-                .ForEach(i => message.Append((i % 15 == 0)
-                ? "FizzBuzz" : (i % 5 == 0) ? "Buzz" : (i % 3 == 0) ? "Fizz" : i.ToString()).AppendLine());
-
-            var duration = start.Subtract(DateTime.Now).Duration().TotalMilliseconds;
+            var duration = FizzBuzz.LinqLoop.Loop(1000);
+            if (duration > 0) Console.WriteLine($"Time taken for Linq: {duration}");
             linqLoop.Add(duration);
-            if(duration > 0) Console.WriteLine($"Time taken for Linq: {duration}");
         }
 
         private static void NormalLoop()
