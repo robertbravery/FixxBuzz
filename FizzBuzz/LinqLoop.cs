@@ -8,8 +8,8 @@ namespace FizzBuzz
     {
         public static double Loop(int maxLoop)
         {
-            DateTime start = DateTime.Now;
-            StringBuilder message = new StringBuilder();
+            var message = new StringBuilder();
+            var start = DateTime.Now;
             Enumerable.Range(1, maxLoop)
                 .ToList()
                 .ForEach(i => message.Append((i % 15 == 0)
