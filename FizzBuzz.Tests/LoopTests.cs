@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FizzBuzz.Tests
 {
@@ -10,7 +9,7 @@ namespace FizzBuzz.Tests
         public void LinqLoopTest()
         {
             var expected = 5;
-            var duration = LinqLoop.Loop(10000);
+            var duration = LinqLoop.Loop(1000);
 
             Assert.IsTrue(expected>duration);
         }
@@ -20,6 +19,15 @@ namespace FizzBuzz.Tests
         {
             var expected = 2;
             var duration = NormalLoop.Loop(10000);
+
+            Assert.IsTrue(expected > duration);
+        }
+
+        [TestMethod]
+        public void ForLoopTest()
+        {
+            var expected = 2;
+            var duration = ForLoop.Loop(10000);
 
             Assert.IsTrue(expected > duration);
         }

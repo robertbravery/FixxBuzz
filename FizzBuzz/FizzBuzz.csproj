@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ForLoop.cs" />
     <Compile Include="LinqLoop.cs" />
     <Compile Include="NormalLoop.cs" />
     <Compile Include="Program.cs" />
