@@ -78,9 +78,9 @@ exit /b %errorlevel%
 
 :RunReportGeneratorOutput
 "%ReportGeneratorExe%" ^
- -reports:"%~dp0\GeneratedReports\CoverageReport.xml" ^
- -targetdir:"%~dp0\GeneratedReports\ReportGenerator Output"
-exit /b %errorlevel%
+ REM -reports:"%~dp0\GeneratedReports\CoverageReport.xml" ^
+ REM -targetdir:"%~dp0\GeneratedReports\ReportGenerator Output"
+REM exit /b %errorlevel%
 
 :RunLaunchReport
 rem start "report" "%~dp0\GeneratedReports\ReportGenerator Output\index.htm"
