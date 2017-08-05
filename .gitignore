@@ -160,6 +160,10 @@ _TeamCity*
 # DotCover is a Code Coverage Tool
 *.dotCover
 
+#OpenCover Generated reports
+GeneratedReports/
+*.trx
+
 # NCrunch
 _NCrunch_*
 .*crunch*.local.xml
