@@ -62,12 +62,13 @@ REM Launch the report
 REM if %errorlevel% equ 0 ( 
  REM call :RunLaunchReport 
 REM )
-exit /b %errorlevel%
+rem exit /b %errorlevel%
 
 :RunOpenCoverUnitTestMetrics 
 rem Check if the test results file exist
 SET MYFILE="FizzBuzzTestResults.trx" 
 IF EXIST %MYFILE% DEL /F %MYFILE%
+
 
 REM *** Change the filter to include/exclude parts of the solution you want to 
 REM *** check for test coverage
@@ -83,6 +84,7 @@ exit /b %errorlevel%
 
 :OpenCoverToNCoverConvert
 "C:\Users\rbravery\Documents\Visual Studio 2015\Projects\XsltConvert\XsltConvert\bin\Debug\XsltConvert.exe" "opencover_to_ncover.xslt" "%~dp0GeneratedReports\CoverageReport.xml" "%~dp0GeneratedReports\Coverage.xml"
+exit /b %errorlevel%
 
 :RunReportGeneratorOutput
 rem "%ReportGeneratorExe%" ^
