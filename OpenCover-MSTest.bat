@@ -35,7 +35,8 @@ SET TestRunnerExe=%PROGRAMFILES(X86)%\Microsoft Visual Studio 14.0\Common7\IDE\M
 
 REM Get OpenCover Executable (done this way so we dont have to change 
 REM the code when the version number changes)
-for /R "%~dp0packages" %%a in (*) do if /I "%%~nxa"=="OpenCover.Console.exe" SET OpenCoverExe=%%~dpnxa
+rem for /R "%~dp0packages" %%a in (*) do if /I "%%~nxa"=="OpenCover.Console.exe" SET OpenCoverExe=%%~dpnxa
+set OpenCoverExe="C:\Users\rbravery\AppData\Local\Apps\OpenCover\OpenCover.Console.exe"
 
 REM Get Report Generator (done this way so we dont have to change the code 
 REM when the version number changes)
