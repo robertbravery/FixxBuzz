@@ -40,7 +40,7 @@ set OpenCoverExe="C:\Users\rbravery\AppData\Local\Apps\OpenCover\OpenCover.Conso
 
 REM Get Report Generator (done this way so we dont have to change the code 
 REM when the version number changes)
-for /R "%~dp0packages" %%a in (*) do if /I "%%~nxa"=="ReportGenerator.exe" SET ReportGeneratorExe=%%~dpnxa
+rem for /R "%~dp0packages" %%a in (*) do if /I "%%~nxa"=="ReportGenerator.exe" SET ReportGeneratorExe=%%~dpnxa
 
 REM Create a 'GeneratedReports' folder if it does not exist
 if not exist "%~dp0GeneratedReports" mkdir "%~dp0GeneratedReports"
@@ -52,6 +52,7 @@ REM Convert Opencover xml to NCover XM for Bamboo
 if %errorlevel% equ 0 ( 
   call :OpenCoverToNCoverConvert 
  )
+exit /b %errorlevel%
 
 REM Generate the report output based on the test results
 REM if %errorlevel% equ 0 ( 
@@ -77,11 +78,12 @@ REM *** check for test coverage
  -targetargs:"/noisolation /testcontainer:\"%DllContainingTests%\" /resultsfile:\"%~dp0FizzBuzzTestResults.trx\"" ^
  -filter:"+[*]* -[*.Tests*]* -[*]*.Global -[*]*.RouteConfig -[*]*.WebApiConfig" ^
  -mergebyhash ^
- -skipautoprops ^
- -register:user ^%
+ -skipautoprops ^%
  -output:"%~dp0GeneratedReports\CoverageReport.xml"
 exit /b %errorlevel%
 
+ rem -register:user ^%
+ 
 :OpenCoverToNCoverConvert
 "C:\Users\rbravery\Documents\Visual Studio 2015\Projects\XsltConvert\XsltConvert\bin\Debug\XsltConvert.exe" "opencover_to_ncover.xslt" "%~dp0GeneratedReports\CoverageReport.xml" "%~dp0GeneratedReports\Coverage.xml"
 exit /b %errorlevel%
