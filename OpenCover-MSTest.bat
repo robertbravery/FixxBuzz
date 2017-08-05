@@ -79,7 +79,7 @@ REM *** check for test coverage
  -filter:"+[*]* -[*.Tests*]* -[*]*.Global -[*]*.RouteConfig -[*]*.WebApiConfig" ^
  -mergebyhash ^
  -skipautoprops ^
- -register:path64 ^%
+ -register:path32 ^%
  -output:"%~dp0GeneratedReports\CoverageReport.xml"
 exit /b %errorlevel%
 
