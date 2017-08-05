@@ -9,7 +9,7 @@ namespace FizzBuzz.Tests
         public void LinqLoopTest()
         {
             var expected = 10;
-            var duration = LinqLoop.Loop(1000);
+            var duration = LinqLoop.Loop(100);
 
             Assert.IsTrue(expected>duration);
         }
@@ -18,7 +18,7 @@ namespace FizzBuzz.Tests
         public void NormalLoopTest()
         {
             var expected = 10;
-            var duration = NormalLoop.Loop(1000);
+            var duration = NormalLoop.Loop(100);
 
             Assert.IsTrue(expected > duration);
         }
@@ -27,7 +27,7 @@ namespace FizzBuzz.Tests
         public void ForLoopTest()
         {
             var expected = 10;
-            var duration = ForLoop.Loop(1000);
+            var duration = ForLoop.Loop(100);
 
             Assert.IsTrue(expected > duration);
         }
