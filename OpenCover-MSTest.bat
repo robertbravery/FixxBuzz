@@ -78,7 +78,8 @@ REM *** check for test coverage
  -targetargs:"/noisolation /testcontainer:\"%DllContainingTests%\" /resultsfile:\"%~dp0FizzBuzzTestResults.trx\"" ^
  -filter:"+[*]* -[*.Tests*]* -[*]*.Global -[*]*.RouteConfig -[*]*.WebApiConfig" ^
  -mergebyhash ^
- -skipautoprops ^%
+ -skipautoprops ^
+ -register:path64 ^%
  -output:"%~dp0GeneratedReports\CoverageReport.xml"
 exit /b %errorlevel%
 
