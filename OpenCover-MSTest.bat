@@ -49,14 +49,14 @@ REM Run the tests against the targeted output
 call :RunOpenCoverUnitTestMetrics
 
 REM Generate the report output based on the test results
-if %errorlevel% equ 0 ( 
- call :RunReportGeneratorOutput 
-)
+REM if %errorlevel% equ 0 ( 
+ REM call :RunReportGeneratorOutput 
+REM )
 
 REM Launch the report
-if %errorlevel% equ 0 ( 
- call :RunLaunchReport 
-)
+REM if %errorlevel% equ 0 ( 
+ REM call :RunLaunchReport 
+REM )
 exit /b %errorlevel%
 
 :RunOpenCoverUnitTestMetrics 
@@ -77,7 +77,7 @@ REM *** check for test coverage
 exit /b %errorlevel%
 
 :RunReportGeneratorOutput
-"%ReportGeneratorExe%" ^
+rem "%ReportGeneratorExe%" ^
  REM -reports:"%~dp0\GeneratedReports\CoverageReport.xml" ^
  REM -targetdir:"%~dp0\GeneratedReports\ReportGenerator Output"
 REM exit /b %errorlevel%
