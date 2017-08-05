@@ -48,6 +48,11 @@ if not exist "%~dp0GeneratedReports" mkdir "%~dp0GeneratedReports"
 REM Run the tests against the targeted output
 call :RunOpenCoverUnitTestMetrics
 
+REM Convert Opencover xml to NCover XM for Bamboo
+if %errorlevel% equ 0 ( 
+  call :OpenCoverToNCoverConvert 
+ )
+
 REM Generate the report output based on the test results
 REM if %errorlevel% equ 0 ( 
  REM call :RunReportGeneratorOutput 
@@ -72,9 +77,12 @@ REM *** check for test coverage
  -filter:"+[*]* -[*.Tests*]* -[*]*.Global -[*]*.RouteConfig -[*]*.WebApiConfig" ^
  -mergebyhash ^
  -skipautoprops ^
- -register:user ^
+ -register:user ^%
  -output:"%~dp0GeneratedReports\CoverageReport.xml"
 exit /b %errorlevel%
+
+:OpenCoverToNCoverConvert
+"C:\Users\rbravery\Documents\Visual Studio 2015\Projects\XsltConvert\XsltConvert\bin\Debug\XsltConvert.exe" "opencover_to_ncover.xslt" "%~dp0GeneratedReports\CoverageReport.xml" "%~dp0GeneratedReports\Coverage.xml"
 
 :RunReportGeneratorOutput
 rem "%ReportGeneratorExe%" ^
