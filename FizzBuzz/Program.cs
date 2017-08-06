@@ -8,7 +8,7 @@ namespace FizzBuzz
     {
         static readonly List<double> ForLoop = new List<double>();
         static readonly List<double> forLoop1 = new List<double>();
-        static List<double> linqLoop = new List<double>();
+        static readonly List<double> linqLoop = new List<double>();
             
         static void Main(string[] args)
         {
@@ -26,6 +26,8 @@ namespace FizzBuzz
             Console.WriteLine($"Loop 1 average time: {forLoop1.Average()} ms, Total time {forLoop1.Sum()/1000} s");
             Console.WriteLine($"Avery time for loop: {ForLoop.Average()} ms, Total time {ForLoop.Sum() / 1000} s");
             Console.WriteLine($"Avery time for linq: {linqLoop.Average()} ms, Total time {linqLoop.Sum() / 1000} s");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("New Change has been deployed");
             Console.ReadLine();
         }
 

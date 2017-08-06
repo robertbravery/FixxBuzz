@@ -32,6 +32,7 @@ REM
 
 REM *** MSTest Test Runner (VS2013, will need to change 12.0 to 14.0 for VS2015)
 SET TestRunnerExe=%PROGRAMFILES(X86)%\Microsoft Visual Studio 14.0\Common7\IDE\MSTest.exe
+rem SET TestRunnerExe=%PROGRAMFILES(X86)%\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe
 
 REM Get OpenCover Executable (done this way so we dont have to change 
 REM the code when the version number changes)
@@ -47,6 +48,7 @@ if not exist "%~dp0GeneratedReports" mkdir "%~dp0GeneratedReports"
 
 REM Run the tests against the targeted output
 call :RunOpenCoverUnitTestMetrics
+rem call :RunOpenCoverUnitTestMetricsVsTest
 
 REM Convert Opencover xml to NCover XM for Bamboo
 if %errorlevel% equ 0 ( 
@@ -83,7 +85,23 @@ REM *** check for test coverage
  -output:"%~dp0GeneratedReports\CoverageReport.xml"
 exit /b %errorlevel%
 
- rem -register:user ^%
+:RunOpenCoverUnitTestMetricsVsTest 
+rem Check if the test results file exist
+SET MYFILE="FizzBuzzTestResults.trx" 
+IF EXIST %MYFILE% DEL /F %MYFILE%
+
+
+REM *** Change the filter to include/exclude parts of the solution you want to 
+REM *** check for test coverage
+"%OpenCoverExe%" ^
+ -target:"%TestRunnerExe%" ^
+ -targetargs:"\"%DllContainingTests%\"" ^
+ -filter:"+[*]* -[*.Tests*]* -[*]*.Global -[*]*.RouteConfig -[*]*.WebApiConfig" ^
+ -mergebyhash ^
+ -skipautoprops ^
+ -register:path32 ^
+ -output:"%~dp0GeneratedReports\CoverageReport.xml"
+exit /b %errorlevel%
  
 :OpenCoverToNCoverConvert
 "C:\Users\rbravery\Documents\Visual Studio 2015\Projects\XsltConvert\XsltConvert\bin\Debug\XsltConvert.exe" "opencover_to_ncover.xslt" "%~dp0GeneratedReports\CoverageReport.xml" "%~dp0GeneratedReports\Coverage.xml"
