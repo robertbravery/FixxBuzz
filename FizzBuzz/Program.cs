@@ -28,8 +28,8 @@ namespace FizzBuzz
             Console.WriteLine($"Avery time for linq: {linqLoop.Average()} ms, Total time {linqLoop.Sum() / 1000} s");
             //Console.ForegroundColor = ConsoleColor.Yellow;
             //Console.WriteLine("This was the old change");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("New change deployed to environment");
+            //Console.ForegroundColor = ConsoleColor.Green;
+            //Console.WriteLine("New change deployed to environment");
             Console.ReadLine();
         }
 
